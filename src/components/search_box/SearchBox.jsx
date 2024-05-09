@@ -1,5 +1,5 @@
 //import SearchBox from './SearchBox.module.css'
-import { useState } from "react";
+import { useId, useState } from "react";
 
 const SearchBox = ({ filterContactsByName }) => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -9,12 +9,16 @@ const SearchBox = ({ filterContactsByName }) => {
         setSearchTerm(value);
         filterContactsByName(value);
     }
+
+    const fieldId = useId();
+    
     return (
         <div>
-            <label htmlFor="searchInput">Find contacts by name</label>
+            <label htmlFor={`search-${fieldId}`}>Find contacts by name</label>
             <input
                 type='text'
-                id="searchInput"
+                name='search'
+                id={`search-${fieldId}`}
                 value={searchTerm}
                 onChange={handleChange}
             />

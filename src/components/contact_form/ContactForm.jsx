@@ -1,42 +1,50 @@
-import { useState } from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 //import ContactForm from './ContactForm.module.css'
 
 const ContactForm = ({ addContact }) => {
-    const [name, setName] = useState('');
-    const [number, setNumber] = useState('');
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (!name.trim() || !number.trim()) return;
-        addContact({ id: Date.now(), name, number });
-        setName('');
-        setNumber('');
+    const handleSubmit = (values, { resetForm }) => {
+        addContact({ id: Math.random().toString(), ...values });
+        resetForm();
     };
 
+    const validationSchema = Yup.object({
+        name: Yup.string()
+            .required('Required')
+            .min(3, 'Name must be at least 3 characters')
+            .max(50, 'Name must be less than 50 characters'),
+        number: Yup.string()
+            .required('Required')
+            .min(3, 'Name must be at least 3 characters')
+            .max(50, 'Name must be less than 50 characters'),
+    });
+    
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor='nameInput'>Name</label>
-                <input
-                    type='text'
-                    name='Name'
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-            />
-            </div>
+        <Formik
+            initialValues={{
+                name: "",
+                number: ""
+            }}
+            onSubmit={handleSubmit}
+            validationSchema={validationSchema}
+        >
+            <Form>
+                <div>
+                    <label htmlFor='name'>Name</label>
+                    <Field type='text' name='name' id='name' />
+                    <ErrorMessage name='name' component='div' />
+                </div>
             
-            <div>
-                <label htmlFor='numberInput'>Number</label>
-                <input
-                    type='number'
-                    name='Number'
-                    value={number}
-                    onChange={(e) => setNumber(e.target.value)}
-                />
-            </div>
+                <div>
+                    <label htmlFor='number'>Number</label>
+                    <Field type='number' name='number' id='number' />
+                    <ErrorMessage name='number' component='div' />
+                </div>
             
-            <button type='submit'>Add contact</button>
-        </form>
-    )
-}
+                <button type='submit'>Add contact</button>
+            </Form>
+        </Formik>
+        
+    );
+};
 export default ContactForm;

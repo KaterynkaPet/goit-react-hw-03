@@ -1,0 +1,21 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 40px;
+    padding: 8 px;
+    border: 1px solid black;
+}
+
+.input {
+    font: inherit;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+}
+.error {
+    color: orangered;
+    font-size: 10px;
+}
