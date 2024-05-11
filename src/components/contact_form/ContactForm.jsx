@@ -1,6 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-//import ContactForm from './ContactForm.module.css'
+import css from './ContactForm.module.css'
 
 const ContactForm = ({ addContact }) => {
     const handleSubmit = (values, { resetForm }) => {
@@ -28,20 +28,20 @@ const ContactForm = ({ addContact }) => {
             onSubmit={handleSubmit}
             validationSchema={validationSchema}
         >
-            <Form>
-                <div>
+            <Form  className={css.form}>
+                <div className={css.formGroup} >
                     <label htmlFor='name'>Name</label>
-                    <Field type='text' name='name' id='name' />
-                    <ErrorMessage name='name' component='div' />
+                    <Field className={css.input} type='text' name='name' id='name' />
+                    <ErrorMessage className={css.error} name='name' component='div' />
                 </div>
             
-                <div>
+                <div className={css.formGroup}>
                     <label htmlFor='number'>Number</label>
-                    <Field type='number' name='number' id='number' />
-                    <ErrorMessage name='number' component='div' />
+                    <Field className={css.input} type='number' name='number' id='number' />
+                    <ErrorMessage className={css.error} name='number' component='div' />
                 </div>
             
-                <button type='submit'>Add contact</button>
+                <button className={css.btn} type='submit'>Add contact</button>
             </Form>
         </Formik>
         

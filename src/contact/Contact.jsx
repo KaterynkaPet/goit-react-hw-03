@@ -1,4 +1,3 @@
-//import Contact from './Contact.module.css'
 
 const Contact = ({ contact, deleteContact }) => {
     return (

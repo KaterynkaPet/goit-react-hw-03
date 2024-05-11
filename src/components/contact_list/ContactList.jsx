@@ -1,12 +1,20 @@
-//import ContactList from './ContactList.module.css'
+import css from './ContactList.module.css'
 
 const ContactList = ({ contacts, deleteContact }) => {
     return (
-        <ul>
+        <ul className={css.contactList}>
             {contacts.map(contact => (
-                <li key={contact.id}>
-                    {contact.name}: {contact.number}
-                    <button onClick={() => deleteContact(contact.id)}>Delete</button>
+                <li className={css.form} key={contact.id}>
+                    <ul className={css.user} >
+                        <li className={css.userList}>
+                            <img src='src/SVG/user.svg' alt='svg icon' /> {contact.name}
+                        </li>
+                        <li className={css.userList}>
+                            <img src='src/SVG/phone.svg' alt='svg icon' />{contact.number}
+                        </li>
+                    </ul>
+                    
+                    <button className={css.btn} onClick={() => deleteContact(contact.id)}>Delete</button>
                 </li>
             ))}
         </ul>

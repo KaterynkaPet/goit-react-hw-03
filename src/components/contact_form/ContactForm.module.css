@@ -2,13 +2,27 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    max-width: 40px;
-    padding: 8 px;
+    padding: 20px;
     border: 1px solid black;
+    border-radius: 8px;
+    font-weight: 600;
 }
 
 .input {
-    font: inherit;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    max-width: 150px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: rgb(240, 240, 240);
+    margin-top: 8px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .formGroup {
@@ -17,5 +31,5 @@
 }
 .error {
     color: orangered;
-    font-size: 10px;
+    font-size: 16px;
 }
