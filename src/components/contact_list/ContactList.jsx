@@ -7,10 +7,10 @@ const ContactList = ({ contacts, deleteContact }) => {
                 <li className={css.form} key={contact.id}>
                     <ul className={css.user} >
                         <li className={css.userList}>
-                            <img src='src/SVG/user.svg' alt='svg icon' /> {contact.name}
+                            <img src='./src/SVG/user.svg' alt='svg icon' /> {contact.name}
                         </li>
                         <li className={css.userList}>
-                            <img src='src/SVG/phone.svg' alt='svg icon' />{contact.number}
+                            <img src='./src/SVG/phone.svg' alt='svg icon' />{contact.number}
                         </li>
                     </ul>
                     
